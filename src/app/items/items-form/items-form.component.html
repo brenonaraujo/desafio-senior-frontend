@@ -1,0 +1,83 @@
+<p-toast [style]="{marginTop: '80px'}" position="top-right" key="form-toast"></p-toast>
+<form [formGroup]="itemForm">
+  <div class="">
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-12 ui-lg-12">
+        <label class="required" for="itemName">Nome do item</label>
+        <div class="ui-inputgroup">
+          <input id="itemName" pInputText [pKeyFilter]="alphaWithSpace" formControlName="itemName" placeholder="Ex: Coca-cola"
+            type="text" maxlength="50">
+        </div>
+        <p-message severity="error" text="Você precisa informar o nome do item" *ngIf="isFieldValid('itemName')"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label class="required" for="itemName">Unidade de medida</label>
+        <div class="ui-inputgroup">
+          <p-dropdown styleClass="unit-dropdown" [options]="units.measurementUnits" formControlName="measurementUnity"
+            [autoWidth]="false"></p-dropdown>
+        </div>
+        <p-message severity="error" text="Você precisa informar a unidade de medida" *ngIf="isFieldValid('measurementUnity')"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label for="itemName">Quantidade</label>
+        <div class="ui-inputgroup">
+          <input pInputText pKeyFilter="num" formControlName="quantity" [mask]="quantity.mask" [placeholder]="quantity.placeholder" >
+          <span class="ui-inputgroup-addon">{{quantity.unity}}</span>
+        </div>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label class="required" for="itemName">Preço</label>
+        <div class="ui-inputgroup">
+          <input pInputText currencyMask formControlName="price" [options]="ngxCurrencyOptions" [placeholder]="'R$ 0,00'"
+            maxlength="20">
+        </div>
+        <p-message severity="error" text="Você precisa informar o Preço" *ngIf="isFieldValid('price')"></p-message>
+      </div>
+
+    </div>
+    <div class="ui-g ui-fluid">
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label class="required" for="itemName">Produto perecível</label>
+        <div class="ui-inputgroup">
+          <div class="radio-align">
+            <div class="ui-g-12">
+              <p-radioButton name="perishable" value="true" label="Sim" formControlName="perishable"></p-radioButton>
+            </div>
+            <div class="ui-g-12">
+              <p-radioButton name="perishable" value="false" label="Não" formControlName="perishable"></p-radioButton>
+            </div>
+          </div>
+        </div>
+        <p-message severity="error" text="Você precisa informar se o produto e perecível" *ngIf="isFieldValid('perishable')"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label [ngClass]="isRequired()" for="itemName">Data de Validade</label>
+        <i *ngIf="outOfDate" pTooltip="Produto Vencido!" tooltipPosition="top" class="pi pi-calendar-times outOfDate"></i>
+        <div class="ui-inputgroup">
+          <p-calendar formControlName="validationDate"></p-calendar>
+        </div>
+        <p-message severity="error" text="Você precisa informar a data de validade" *ngIf="isFieldValid('validationDate')"></p-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-lg-4">
+        <label class="required" for="itemName">Data de fabricação </label>
+        <div class="ui-inputgroup">
+          <p-calendar formControlName="manufacturingDate" [maxDate]="itemForm.get('validationDate').value"></p-calendar>
+        </div>
+        <p-message severity="error" text="Você precisa informar a data de fabricação" *ngIf="isFieldValid('manufacturingDate')"></p-message>
+      </div>
+
+    </div>
+    <p-footer>
+      <div class="group-button">
+        <button pButton type="button" (click)="onSubmit()" label="Salvar" class="ui-button-raised ui-button-success"></button>
+        <button pButton type="button" (click)="onCancel()" label="Cancelar" class="ui-button-raised ui-button-danger"></button>
+      </div>
+    </p-footer>
+  </div>
+</form>

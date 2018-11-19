@@ -1,0 +1,11 @@
+<div class=" ui-g-12 ui-md-12 ui-lg-12 ui-xl-12">
+    <p-card class="centralized">
+      <p-header class="header-card-form">
+        <div class="ui-helper-clearfix title-card-header">
+          <span class="ui-panel-title">Item: {{item.itemName}}</span>
+        </div>
+      </p-header>
+      <app-items-form [item]="item" [quantityObject]="quantity" (validItem)="onValidItem($event)"></app-items-form>
+    </p-card>
+  </div>
+  

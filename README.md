@@ -1,27 +1,59 @@
-# DesafioSeniorFrontend
+# Desafio front end - Senior
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+Tarefa: Construir uma aplicação web para realizar o cadastro de itens.
 
-## Development server
+  A aplicação deverá ser composta por 2 páginas, sendo uma para cadastro e outra para listagem. Ambas as páginas devem possuir um menu lateral, localizado à esquerda, com links para as mesmas, além de um sistema de navegação estrutural. 
+Os dados devem ser persistidos no formato JSON, fazendo uso da LocalStorage, adicionando, removendo e editando itens do JSON em questão. Não é necessária a utilização de APIs.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Features!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  - Cadastro de items.
+  - Lista de items.
+  - Edicao de items.
+  - Exclusao.
 
-## Build
+Tecnologias e conceitos:
+  - Angular 7
+  - HTML 5;
+  - CSS;
+  - TypeScript / JavaScript;
+  - Rotas;
+  - Utilização de LocalStorage;
+  - PrimeNG.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+### Tech
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Angular](https://angular.io/docs) - Angular is a platform that makes it easy to build applications with the web.
+* [PrimeNg](https://www.primefaces.org/primeng/#/) - PrimeNG is a collection of rich UI components for Angular
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Requires [Node.js](https://nodejs.org/) v8+ and [Angular-CLI](https://cli.angular.io/).
 
-## Further help
+Install the dependencies and devDependencies and start the server.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```sh
+$ cd desafio-senior-frontend
+$ npm install 
+$ ng serve
+```
+
+For production environments...
+
+```sh
+$ ng build
+```
+
+
+### Todos
+
+ - ----
+ - Do better
+
+License
+----
+
+MIT
+

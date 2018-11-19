@@ -1,0 +1,10 @@
+<div class="sideNav">
+  <ul class="nav">
+    <li *ngFor="let item of items">
+      <a [routerLink]="item.routerLink" routerLinkActive="active-link">
+        <i [class]="item.icon"></i>
+        <p>{{item.label}}</p>
+      </a>
+    </li>
+  </ul>
+</div>
