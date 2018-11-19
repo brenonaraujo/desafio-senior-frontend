@@ -5,6 +5,7 @@ Tarefa: Construir uma aplicação web para realizar o cadastro de itens.
   A aplicação deverá ser composta por 2 páginas, sendo uma para cadastro e outra para listagem. Ambas as páginas devem possuir um menu lateral, localizado à esquerda, com links para as mesmas, além de um sistema de navegação estrutural. 
 Os dados devem ser persistidos no formato JSON, fazendo uso da LocalStorage, adicionando, removendo e editando itens do JSON em questão. Não é necessária a utilização de APIs.
 
+*[DEMO](https://desafio-frontend-senior.firebaseapp.com/items/create) - On Firebase.
 
 # Features!
 
