@@ -59,7 +59,6 @@ export class ListComponent implements OnInit {
           detail: `O item foi removido`
         });
       }).catch(err => {
-        console.log(err);
         this.messageService.add({
           severity: 'danger',
           summary: 'Erro!',

@@ -24,7 +24,6 @@ export class ItemsEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      console.log(data[0]);
       this.item = data[0];
       this.quantity.unity = this.item.measurementUnity;
       this.quantity.setPlaceholder(this.item.measurementUnity);

@@ -39,31 +39,33 @@
       <ng-template pTemplate="body" let-item let-columns="columns">
         <tr>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Nome:</span>
             {{item.itemName}}
           </td>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Unidade de medida:</span>
             {{item.measurementUnity | measurementUnityPipe }}
           </td>
           <td>
-            <span class="ui-column-title"></span>
-            {{item.quantity}}
+            <span class="ui-column-title">Quantidade:</span>
+            {{
+              item.measurementUnity === 'un' ? (item.quantity | number) : ( item.quantity | number:'1.3-3')
+            }}
           </td>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Preço</span>
             {{item.price | currency:'BRL'}}
           </td>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Perecível:</span>
             {{ (item.perishable === 'true') ? 'Sim' : 'Não'}}
           </td>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Validade:</span>
             {{item.validationDate | date:'dd/MM/yyyy'}}
           </td>
           <td>
-            <span class="ui-column-title"></span>
+            <span class="ui-column-title">Fabricação</span>
             {{item.manufacturingDate | date:'dd/MM/yyyy'}}
           </td>
           <td>

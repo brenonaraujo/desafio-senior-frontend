@@ -12,12 +12,12 @@ export class MeasurementUnityPipe implements PipeTransform {
     transform(value: string): string {
         switch (value) {
             case 'lt':
-                return 'Litros';
+                return 'Litro';
                 break;
             case 'kg':
-                return 'Kilogramas';
+                return 'Kilograma';
             case 'un':
-                return 'unidades';
+                return 'unidade';
             default:
                 break;
         }

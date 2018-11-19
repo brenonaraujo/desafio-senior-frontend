@@ -88,7 +88,6 @@ export class FormComponent implements OnInit {
 
     // Verifica a mudanca no measurementUnity Dropdown para setar as regras de acordo com a unidade selecionada
     this.itemForm.get('measurementUnity').valueChanges.subscribe(value => {
-      console.log(value);
       const quantityForm = this.itemForm.get('quantity');
       this.quantity.unity = value;
       this.quantity.setPlaceholder(value);
