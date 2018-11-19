@@ -71,7 +71,7 @@ export class FormComponent implements OnInit {
       quantity: new FormControl({
         value: this.item.quantity,
         disabled: (!this.item.quantity)
-      }),
+      }, Validators.pattern(/^\d+(\.\d{1,3})?$/)),
       price: [this.item.price, Validators.required],
       perishable: [this.item.perishable, Validators.required],
       validationDate: [{

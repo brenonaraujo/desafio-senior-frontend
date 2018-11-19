@@ -25,10 +25,9 @@ import { ItemsEditComponent } from './items-edit/items-edit.component';
 import { ItemsCreateComponent } from './items-create/items-create.component';
 import { ItemsResolver } from './items.resolver';
 import { MessageService } from 'primeng/api';
-import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
-  declarations: [FormComponent, ListComponent, MeasurementUnityPipe, ItemsEditComponent, ItemsCreateComponent ],
+  declarations: [FormComponent, ListComponent, MeasurementUnityPipe, ItemsEditComponent, ItemsCreateComponent],
   imports: [
     CommonModule,
     ItemsRoutingModule,
@@ -46,8 +45,7 @@ import {NgxMaskModule} from 'ngx-mask';
     RadioButtonModule,
     TooltipModule,
     TableModule,
-    ToastModule,
-    NgxMaskModule.forRoot()
+    ToastModule
   ],
   providers: [
     ItemsService,

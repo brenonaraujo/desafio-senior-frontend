@@ -12,7 +12,7 @@ import { Quantity } from 'src/app/shared/models/quantity.model';
 })
 export class ItemsCreateComponent implements OnInit {
   item = new Item();
-  quantity = new Quantity('', false, '', '');
+  quantity = new Quantity('', false, '', [{}]);
 
   constructor(
     private messageService: MessageService,
@@ -20,7 +20,6 @@ export class ItemsCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.item.quantity = 0;
   }
 
   onValidItem(item) {

@@ -23,7 +23,7 @@
       <div class="ui-g-12 ui-md-6 ui-lg-4">
         <label for="itemName">Quantidade</label>
         <div class="ui-inputgroup">
-          <input pInputText pKeyFilter="num" formControlName="quantity" [mask]="quantity.mask" [placeholder]="quantity.placeholder" >
+          <input pInputText currencyMask [options]="quantity.mask" formControlName="quantity" [placeholder]="quantity.placeholder" maxlength="20">
           <span class="ui-inputgroup-addon">{{quantity.unity}}</span>
         </div>
       </div>
@@ -59,7 +59,7 @@
         <label [ngClass]="isRequired()" for="itemName">Data de Validade</label>
         <i *ngIf="outOfDate" pTooltip="Produto Vencido!" tooltipPosition="top" class="pi pi-calendar-times outOfDate"></i>
         <div class="ui-inputgroup">
-          <p-calendar formControlName="validationDate"></p-calendar>
+          <p-calendar formControlName="validationDate" dateFormat="dd/mm/yy"></p-calendar>
         </div>
         <p-message severity="error" text="Você precisa informar a data de validade" *ngIf="isFieldValid('validationDate')"></p-message>
       </div>
@@ -67,7 +67,7 @@
       <div class="ui-g-12 ui-md-6 ui-lg-4">
         <label class="required" for="itemName">Data de fabricação </label>
         <div class="ui-inputgroup">
-          <p-calendar formControlName="manufacturingDate" [maxDate]="itemForm.get('validationDate').value"></p-calendar>
+          <p-calendar formControlName="manufacturingDate" [maxDate]="itemForm.get('validationDate').value" dateFormat="dd/mm/yy"></p-calendar>
         </div>
         <p-message severity="error" text="Você precisa informar a data de fabricação" *ngIf="isFieldValid('manufacturingDate')"></p-message>
       </div>

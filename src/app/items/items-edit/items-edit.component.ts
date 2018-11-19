@@ -13,7 +13,7 @@ import { Quantity } from 'src/app/shared/models/quantity.model';
 })
 export class ItemsEditComponent implements OnInit {
   item = new Item();
-  quantity = new Quantity('', false, '', '');
+  quantity = new Quantity('', false, '', {});
 
   constructor(
     private itemsService: ItemsService,
