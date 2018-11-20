@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
       validationDate: [{
         // verifica se ja existe um valor atribuido para validationDate caso tenha transforma em um date para o component p-calendar
         value: (!this.item.validationDate) ? undefined : new Date(this.item.validationDate),
-        disabled: (!this.item.manufacturingDate)
+        disabled: (!this.item.validationDate)
       }],
       manufacturingDate: [{
         // Mesma vericacao do item anterior porem para a variavel manufacturingDate

@@ -222,10 +222,9 @@ var ItemsCreateComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.itemsService = itemsService;
         this.item = new src_app_shared_models_item_model__WEBPACK_IMPORTED_MODULE_3__["Item"]();
-        this.quantity = new src_app_shared_models_quantity_model__WEBPACK_IMPORTED_MODULE_4__["Quantity"]('', false, '', '');
+        this.quantity = new src_app_shared_models_quantity_model__WEBPACK_IMPORTED_MODULE_4__["Quantity"]('', false, '', [{}]);
     }
     ItemsCreateComponent.prototype.ngOnInit = function () {
-        this.item.quantity = 0;
     };
     ItemsCreateComponent.prototype.onValidItem = function (item) {
         var _this = this;
@@ -324,12 +323,11 @@ var ItemsEditComponent = /** @class */ (function () {
         this.messageService = messageService;
         this.router = router;
         this.item = new src_app_shared_models_item_model__WEBPACK_IMPORTED_MODULE_3__["Item"]();
-        this.quantity = new src_app_shared_models_quantity_model__WEBPACK_IMPORTED_MODULE_5__["Quantity"]('', false, '', '');
+        this.quantity = new src_app_shared_models_quantity_model__WEBPACK_IMPORTED_MODULE_5__["Quantity"]('', false, '', {});
     }
     ItemsEditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.data.subscribe(function (data) {
-            console.log(data[0]);
             _this.item = data[0];
             _this.quantity.unity = _this.item.measurementUnity;
             _this.quantity.setPlaceholder(_this.item.measurementUnity);
@@ -385,7 +383,7 @@ var ItemsEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-toast [style]=\"{marginTop: '80px'}\" position=\"top-right\" key=\"form-toast\"></p-toast>\n<form [formGroup]=\"itemForm\">\n  <div class=\"\">\n    <div class=\"ui-g ui-fluid\">\n      <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n        <label class=\"required\" for=\"itemName\">Nome do item</label>\n        <div class=\"ui-inputgroup\">\n          <input id=\"itemName\" pInputText [pKeyFilter]=\"alphaWithSpace\" formControlName=\"itemName\" placeholder=\"Ex: Coca-cola\"\n            type=\"text\" maxlength=\"50\">\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar o nome do item\" *ngIf=\"isFieldValid('itemName')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Unidade de medida</label>\n        <div class=\"ui-inputgroup\">\n          <p-dropdown styleClass=\"unit-dropdown\" [options]=\"units.measurementUnits\" formControlName=\"measurementUnity\"\n            [autoWidth]=\"false\"></p-dropdown>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a unidade de medida\" *ngIf=\"isFieldValid('measurementUnity')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label for=\"itemName\">Quantidade</label>\n        <div class=\"ui-inputgroup\">\n          <input pInputText pKeyFilter=\"num\" formControlName=\"quantity\" [mask]=\"quantity.mask\" [placeholder]=\"quantity.placeholder\" >\n          <span class=\"ui-inputgroup-addon\">{{quantity.unity}}</span>\n        </div>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Preço</label>\n        <div class=\"ui-inputgroup\">\n          <input pInputText currencyMask formControlName=\"price\" [options]=\"ngxCurrencyOptions\" [placeholder]=\"'R$ 0,00'\"\n            maxlength=\"20\">\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar o Preço\" *ngIf=\"isFieldValid('price')\"></p-message>\n      </div>\n\n    </div>\n    <div class=\"ui-g ui-fluid\">\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Produto perecível</label>\n        <div class=\"ui-inputgroup\">\n          <div class=\"radio-align\">\n            <div class=\"ui-g-12\">\n              <p-radioButton name=\"perishable\" value=\"true\" label=\"Sim\" formControlName=\"perishable\"></p-radioButton>\n            </div>\n            <div class=\"ui-g-12\">\n              <p-radioButton name=\"perishable\" value=\"false\" label=\"Não\" formControlName=\"perishable\"></p-radioButton>\n            </div>\n          </div>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar se o produto e perecível\" *ngIf=\"isFieldValid('perishable')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label [ngClass]=\"isRequired()\" for=\"itemName\">Data de Validade</label>\n        <i *ngIf=\"outOfDate\" pTooltip=\"Produto Vencido!\" tooltipPosition=\"top\" class=\"pi pi-calendar-times outOfDate\"></i>\n        <div class=\"ui-inputgroup\">\n          <p-calendar formControlName=\"validationDate\"></p-calendar>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a data de validade\" *ngIf=\"isFieldValid('validationDate')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Data de fabricação </label>\n        <div class=\"ui-inputgroup\">\n          <p-calendar formControlName=\"manufacturingDate\" [maxDate]=\"itemForm.get('validationDate').value\"></p-calendar>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a data de fabricação\" *ngIf=\"isFieldValid('manufacturingDate')\"></p-message>\n      </div>\n\n    </div>\n    <p-footer>\n      <div class=\"group-button\">\n        <button pButton type=\"button\" (click)=\"onSubmit()\" label=\"Salvar\" class=\"ui-button-raised ui-button-success\"></button>\n        <button pButton type=\"button\" (click)=\"onCancel()\" label=\"Cancelar\" class=\"ui-button-raised ui-button-danger\"></button>\n      </div>\n    </p-footer>\n  </div>\n</form>\n"
+module.exports = "<p-toast [style]=\"{marginTop: '80px'}\" position=\"top-right\" key=\"form-toast\"></p-toast>\n<form [formGroup]=\"itemForm\">\n  <div class=\"\">\n    <div class=\"ui-g ui-fluid\">\n      <div class=\"ui-g-12 ui-md-12 ui-lg-12\">\n        <label class=\"required\" for=\"itemName\">Nome do item</label>\n        <div class=\"ui-inputgroup\">\n          <input id=\"itemName\" pInputText [pKeyFilter]=\"alphaWithSpace\" formControlName=\"itemName\" placeholder=\"Ex: Coca-cola\"\n            type=\"text\" maxlength=\"50\">\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar o nome do item\" *ngIf=\"isFieldValid('itemName')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Unidade de medida</label>\n        <div class=\"ui-inputgroup\">\n          <p-dropdown styleClass=\"unit-dropdown\" [options]=\"units.measurementUnits\" formControlName=\"measurementUnity\"\n            [autoWidth]=\"false\"></p-dropdown>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a unidade de medida\" *ngIf=\"isFieldValid('measurementUnity')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label for=\"itemName\">Quantidade</label>\n        <div class=\"ui-inputgroup\">\n          <input pInputText currencyMask [options]=\"quantity.mask\" formControlName=\"quantity\" [placeholder]=\"quantity.placeholder\" maxlength=\"20\">\n          <span class=\"ui-inputgroup-addon\">{{quantity.unity}}</span>\n        </div>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Preço</label>\n        <div class=\"ui-inputgroup\">\n          <input pInputText currencyMask formControlName=\"price\" [options]=\"ngxCurrencyOptions\" [placeholder]=\"'R$ 0,00'\"\n            maxlength=\"20\">\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar o Preço\" *ngIf=\"isFieldValid('price')\"></p-message>\n      </div>\n\n    </div>\n    <div class=\"ui-g ui-fluid\">\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Produto perecível</label>\n        <div class=\"ui-inputgroup\">\n          <div class=\"radio-align\">\n            <div class=\"ui-g-12\">\n              <p-radioButton name=\"perishable\" value=\"true\" label=\"Sim\" formControlName=\"perishable\"></p-radioButton>\n            </div>\n            <div class=\"ui-g-12\">\n              <p-radioButton name=\"perishable\" value=\"false\" label=\"Não\" formControlName=\"perishable\"></p-radioButton>\n            </div>\n          </div>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar se o produto e perecível\" *ngIf=\"isFieldValid('perishable')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label [ngClass]=\"isRequired()\" for=\"itemName\">Data de Validade</label>\n        <i *ngIf=\"outOfDate\" pTooltip=\"Produto Vencido!\" tooltipPosition=\"top\" class=\"pi pi-calendar-times outOfDate\"></i>\n        <div class=\"ui-inputgroup\">\n          <p-calendar formControlName=\"validationDate\" dateFormat=\"dd/mm/yy\"></p-calendar>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a data de validade\" *ngIf=\"isFieldValid('validationDate')\"></p-message>\n      </div>\n\n      <div class=\"ui-g-12 ui-md-6 ui-lg-4\">\n        <label class=\"required\" for=\"itemName\">Data de fabricação </label>\n        <div class=\"ui-inputgroup\">\n          <p-calendar formControlName=\"manufacturingDate\" [maxDate]=\"itemForm.get('validationDate').value\" dateFormat=\"dd/mm/yy\"></p-calendar>\n        </div>\n        <p-message severity=\"error\" text=\"Você precisa informar a data de fabricação\" *ngIf=\"isFieldValid('manufacturingDate')\"></p-message>\n      </div>\n\n    </div>\n    <p-footer>\n      <div class=\"group-button\">\n        <button pButton type=\"button\" (click)=\"onSubmit()\" label=\"Salvar\" class=\"ui-button-raised ui-button-success\"></button>\n        <button pButton type=\"button\" (click)=\"onCancel()\" label=\"Cancelar\" class=\"ui-button-raised ui-button-danger\"></button>\n      </div>\n    </p-footer>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -460,7 +458,7 @@ var FormComponent = /** @class */ (function () {
             quantity: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]({
                 value: this.item.quantity,
                 disabled: (!this.item.quantity)
-            }),
+            }, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^\d+(\.\d{1,3})?$/)),
             price: [this.item.price, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             perishable: [this.item.perishable, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             validationDate: [{
@@ -476,7 +474,6 @@ var FormComponent = /** @class */ (function () {
         });
         // Verifica a mudanca no measurementUnity Dropdown para setar as regras de acordo com a unidade selecionada
         this.itemForm.get('measurementUnity').valueChanges.subscribe(function (value) {
-            console.log(value);
             var quantityForm = _this.itemForm.get('quantity');
             _this.quantity.unity = value;
             _this.quantity.setPlaceholder(value);
@@ -573,7 +570,7 @@ var FormComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p-toast [style]=\"{marginTop: '80px'}\" position=\"top-right\" key=\"remove-toast\"></p-toast>\n\n<p-toast position=\"center\" key=\"removeConfirm\" (onClose)=\"onRemoveReject()\" [modal]=\"true\" [baseZIndex]=\"5000\">\n  <ng-template let-message pTemplate=\"message\" let-data>\n      <div style=\"text-align: center\">\n          <i class=\"pi pi-exclamation-triangle\" style=\"font-size: 3em\"></i>\n          <h3>{{message.summary}}</h3>\n          <p>{{message.detail}}</p>\n      </div>\n      <div class=\"ui-g ui-fluid\">\n          <div class=\"ui-g-6\">\n              <button type=\"button\" pButton (click)=\"onRemoveConfirm(data)\" label=\"Sim\" class=\"ui-button-success\"></button>\n          </div>\n          <div class=\"ui-g-6\">\n              <button type=\"button\" pButton (click)=\"onRemoveReject()\" label=\"Não\" class=\"ui-button-secondary\"></button>\n          </div>\n      </div>\n  </ng-template>\n</p-toast>\n\n<div class=\"ui-g-12 ui-md-12 ui-lg-12 ui-xl-12\">\n  <p-card>\n    <p-header class=\"header-card-form\">\n      <div class=\"ui-helper-clearfix title-card-header\">\n        <span class=\"ui-panel-title\">Items</span>\n      </div>\n    </p-header>\n    <div style=\"text-align:right\">\n        <button type=\"button\" pButton icon=\"pi pi-plus\" [routerLink]=\"[ '/items/create']\" label=\"Adicionar\"></button>\n    </div>\n    <p-table [columns]=\"columns\" [value]=\"items\" [rows]=\"10\" [paginator]=\"true\" [pageLinks]=\"3\" [responsive]=\"true\">\n      <ng-template pTemplate=\"header\" let-columns>\n        <tr>\n          <th *ngFor=\"let col of columns\">\n            {{col.header}}\n          </th>\n        </tr>\n      </ng-template>\n      <ng-template pTemplate=\"body\" let-item let-columns=\"columns\">\n        <tr>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.itemName}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.measurementUnity | measurementUnityPipe }}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.quantity}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.price | currency:'BRL'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{ (item.perishable === 'true') ? 'Sim' : 'Não'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.validationDate | date:'dd/MM/yyyy'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            {{item.manufacturingDate | date:'dd/MM/yyyy'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            <p-button icon=\"pi pi-pencil\" styleClass=\"ui-button-warning action-icon\" (click)=\"editItem(item)\"></p-button>\n            <p-button icon=\"pi pi-trash\" styleClass=\"ui-button-danger action-icon\" (click)=\"removeItem(item)\"></p-button>\n          </td>\n        </tr>\n      </ng-template>\n      <ng-template pTemplate=\"summary\" *ngIf=\"items?.length !== 0\">\n        Total {{items?.length}} Items\n      </ng-template>\n    </p-table>\n  </p-card>\n</div>\n"
+module.exports = "<p-toast [style]=\"{marginTop: '80px'}\" position=\"top-right\" key=\"remove-toast\"></p-toast>\n\n<p-toast position=\"center\" key=\"removeConfirm\" (onClose)=\"onRemoveReject()\" [modal]=\"true\" [baseZIndex]=\"5000\">\n  <ng-template let-message pTemplate=\"message\" let-data>\n      <div style=\"text-align: center\">\n          <i class=\"pi pi-exclamation-triangle\" style=\"font-size: 3em\"></i>\n          <h3>{{message.summary}}</h3>\n          <p>{{message.detail}}</p>\n      </div>\n      <div class=\"ui-g ui-fluid\">\n          <div class=\"ui-g-6\">\n              <button type=\"button\" pButton (click)=\"onRemoveConfirm(data)\" label=\"Sim\" class=\"ui-button-success\"></button>\n          </div>\n          <div class=\"ui-g-6\">\n              <button type=\"button\" pButton (click)=\"onRemoveReject()\" label=\"Não\" class=\"ui-button-secondary\"></button>\n          </div>\n      </div>\n  </ng-template>\n</p-toast>\n\n<div class=\"ui-g-12 ui-md-12 ui-lg-12 ui-xl-12\">\n  <p-card>\n    <p-header class=\"header-card-form\">\n      <div class=\"ui-helper-clearfix title-card-header\">\n        <span class=\"ui-panel-title\">Items</span>\n      </div>\n    </p-header>\n    <div style=\"text-align:right\">\n        <button type=\"button\" pButton icon=\"pi pi-plus\" [routerLink]=\"[ '/items/create']\" label=\"Adicionar\"></button>\n    </div>\n    <p-table [columns]=\"columns\" [value]=\"items\" [rows]=\"10\" [paginator]=\"true\" [pageLinks]=\"3\" [responsive]=\"true\">\n      <ng-template pTemplate=\"header\" let-columns>\n        <tr>\n          <th *ngFor=\"let col of columns\">\n            {{col.header}}\n          </th>\n        </tr>\n      </ng-template>\n      <ng-template pTemplate=\"body\" let-item let-columns=\"columns\">\n        <tr>\n          <td>\n            <span class=\"ui-column-title\">Nome:</span>\n            {{item.itemName}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Unidade de medida:</span>\n            {{item.measurementUnity | measurementUnityPipe }}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Quantidade:</span>\n            {{\n              item.measurementUnity === 'un' ? (item.quantity | number) : ( item.quantity | number:'1.3-3')\n            }}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Preço</span>\n            {{item.price | currency:'BRL'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Perecível:</span>\n            {{ (item.perishable === 'true') ? 'Sim' : 'Não'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Validade:</span>\n            {{item.validationDate | date:'dd/MM/yyyy'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\">Fabricação</span>\n            {{item.manufacturingDate | date:'dd/MM/yyyy'}}\n          </td>\n          <td>\n            <span class=\"ui-column-title\"></span>\n            <p-button icon=\"pi pi-pencil\" styleClass=\"ui-button-warning action-icon\" (click)=\"editItem(item)\"></p-button>\n            <p-button icon=\"pi pi-trash\" styleClass=\"ui-button-danger action-icon\" (click)=\"removeItem(item)\"></p-button>\n          </td>\n        </tr>\n      </ng-template>\n      <ng-template pTemplate=\"summary\" *ngIf=\"items?.length !== 0\">\n        Total {{items?.length}} Items\n      </ng-template>\n    </p-table>\n  </p-card>\n</div>\n"
 
 /***/ }),
 
@@ -653,7 +650,6 @@ var ListComponent = /** @class */ (function () {
                 detail: "O item foi removido"
             });
         }).catch(function (err) {
-            console.log(err);
             _this.messageService.add({
                 severity: 'danger',
                 summary: 'Erro!',
@@ -782,14 +778,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _items_resolver__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./items.resolver */ "./src/app/items/items.resolver.ts");
 /* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! primeng/api */ "./node_modules/primeng/api.js");
 /* harmony import */ var primeng_api__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(primeng_api__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var ngx_mask__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ngx-mask */ "./node_modules/ngx-mask/fesm5/ngx-mask.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -839,8 +833,7 @@ var ItemsModule = /** @class */ (function () {
                 primeng_radiobutton__WEBPACK_IMPORTED_MODULE_16__["RadioButtonModule"],
                 primeng_tooltip__WEBPACK_IMPORTED_MODULE_17__["TooltipModule"],
                 primeng_table__WEBPACK_IMPORTED_MODULE_19__["TableModule"],
-                primeng_toast__WEBPACK_IMPORTED_MODULE_20__["ToastModule"],
-                ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot()
+                primeng_toast__WEBPACK_IMPORTED_MODULE_20__["ToastModule"]
             ],
             providers: [
                 _shared_services_items_service__WEBPACK_IMPORTED_MODULE_18__["ItemsService"],
@@ -1021,22 +1014,43 @@ var Quantity = /** @class */ (function () {
         this.placeholder = placeholder;
         this.mask = mask;
     }
-    // Altera o placeholder de acordo com a unidade de medidade selecionada e mask
+    // Altera o placeholder de acordo com a unidade de medidade selecionada e as opcoes mask
     Quantity.prototype.setPlaceholder = function (unity) {
         switch (unity) {
             case 'lt': {
                 this.placeholder = '1.000';
-                this.mask = '0*.000';
+                this.mask = {
+                    prefix: '',
+                    thousands: ',',
+                    decimal: '.',
+                    precision: 3,
+                    allowNegative: false,
+                    nullable: true
+                };
                 break;
             }
             case 'kg': {
                 this.placeholder = '1.000';
-                this.mask = '0*.000';
+                this.mask = {
+                    prefix: '',
+                    thousands: ',',
+                    decimal: '.',
+                    precision: 3,
+                    allowNegative: false,
+                    nullable: true
+                };
                 break;
             }
             case 'un': {
                 this.placeholder = '1';
-                this.mask = '0*';
+                this.mask = {
+                    prefix: '',
+                    thousands: ',',
+                    decimal: '.',
+                    precision: 0,
+                    allowNegative: false,
+                    nullable: true
+                };
                 break;
             }
         }
@@ -1239,12 +1253,12 @@ var MeasurementUnityPipe = /** @class */ (function () {
     MeasurementUnityPipe.prototype.transform = function (value) {
         switch (value) {
             case 'lt':
-                return 'Litros';
+                return 'Litro';
                 break;
             case 'kg':
-                return 'Kilogramas';
+                return 'Kilograma';
             case 'un':
-                return 'unidades';
+                return 'unidade';
             default:
                 break;
         }

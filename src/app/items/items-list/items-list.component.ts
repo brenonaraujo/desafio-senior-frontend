@@ -47,9 +47,10 @@ export class ListComponent implements OnInit {
     });
   }
 
-  onRemoveConfirm(item: Item) {
+  onRemoveConfirm(item: any) {
+    console.log(item.data);
     this.messageService.clear('removeConfirm');
-    this.itemsService.removeItem(this.items, item)
+    this.itemsService.removeItem(this.items, item.data)
       .then(res => {
         this.items = res;
         this.messageService.add({
