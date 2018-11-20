@@ -52,6 +52,8 @@ $ ng build --prod
 
  - ----
  - Breadcrumb.
+ - Page notFound.
+ - Loader.
 
 License
 ----
