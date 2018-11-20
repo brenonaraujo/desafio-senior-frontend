@@ -1,12 +1,11 @@
 {
   "hosting": {
-
-
-    "public": "public/desafio-senior-frontend/",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "public": "dist/desafio-senior-frontend",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }

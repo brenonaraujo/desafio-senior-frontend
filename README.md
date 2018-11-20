@@ -9,10 +9,10 @@ Os dados devem ser persistidos no formato JSON, fazendo uso da LocalStorage, adi
 
 # Features!
 
-  - Cadastro de items.
-  - Lista de items.
-  - Edicao de items.
-  - Exclusao.
+  - Cadastro de ites.
+  - Lista de itens.
+  - Edição de itens.
+  - Exclusão.
 
 Tecnologias e conceitos:
   - Angular 7
@@ -44,14 +44,14 @@ $ ng serve
 For production environments...
 
 ```sh
-$ ng build
+$ ng build --prod
 ```
 
 
 ### Todos
 
  - ----
- - Do better
+ - Breadcrumb.
 
 License
 ----

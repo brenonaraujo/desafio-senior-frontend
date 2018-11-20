@@ -5,7 +5,7 @@ interface Unit {
 
 export class MeasurementUnity {
 
-    private measurementUnits: Unit[];
+    measurementUnits: Unit[];
 
     constructor() {
 
